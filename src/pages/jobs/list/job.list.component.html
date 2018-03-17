@@ -1,0 +1,51 @@
+<ion-list>
+  <ion-list-header>
+    Active
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let job of active_jobs; let i = index">
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon *ngIf="job.completed" color="secondary" name="ios-checkbox"></ion-icon>
+        <ion-icon *ngIf="!job.completed" name="ios-checkbox-outline"></ion-icon>
+      </ion-avatar>
+      <h2>{{job.uid}}</h2>
+      <p>{{job.client_name}}</p>
+    </ion-item>
+    <ion-item-options>
+      <button ion-button color="primary" icon-start (click)="updateJob(i,job)">
+        <ion-icon name="create"></ion-icon>
+        Update
+      </button>
+      <button ion-button color="danger" icon-start (click)="deleteJob(i)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+
+  <ion-list-header>
+    Completed Jobs
+  </ion-list-header>
+  <ion-item-sliding *ngFor="let job of completed_jobs; let i = index">
+    <ion-item>
+      <ion-avatar item-start>
+        <ion-icon *ngIf="job.completed" color="secondary" name="ios-checkbox"></ion-icon>
+        <ion-icon *ngIf="!job.completed" name="ios-checkbox-outline"></ion-icon>
+      </ion-avatar>
+      <h2>{{job.uid}}</h2>
+      <p>{{job.client_name}}</p>
+    </ion-item>
+    <ion-item-options>
+      <button ion-button class="primary-button" icon-start (click)="updateJob(job)">
+        <ion-icon name="create"></ion-icon>
+        Update
+      </button>
+      <button ion-button class="warning-button" icon-start (click)="deleteJob(i)">
+        <ion-icon name="trash"></ion-icon>
+        Delete
+      </button>
+    </ion-item-options>
+  </ion-item-sliding>
+
+</ion-list>

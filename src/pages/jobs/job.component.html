@@ -1,0 +1,26 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>Jobs</ion-title>
+    <ion-buttons end>
+      <button ion-button icon-only (click)="addNewJob()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+<ion-content>
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+    <ion-refresher-content></ion-refresher-content>
+  </ion-refresher>
+  <page-job-list *ngIf="jobs && jobs.length; else noItems" [jobs]="jobs"
+                 (deleteJobEmitter)="deleteJob($event)"
+                 (updateJobEmitter)="updateJob($event)"
+  ></page-job-list>
+  <ng-template #noItems>
+    <ion-list>
+      <ion-item class="text-center">
+        Looks like nothing is here
+      </ion-item>
+    </ion-list>
+  </ng-template>
+</ion-content>

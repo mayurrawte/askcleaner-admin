@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import {Component} from '@angular/core';
+import {NavController} from 'ionic-angular';
+import {QuoteService} from "../../shared/quote.service";
 
 @Component({
   selector: 'page-home',
@@ -7,8 +8,13 @@ import { NavController } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  todays_quote;
 
+  constructor(public navCtrl: NavController, public quoteService: QuoteService) {
+    this.quoteService.getMeAQuote()
+      .then((result_data) => {
+        this.todays_quote = result_data;
+      });
   }
 
 }

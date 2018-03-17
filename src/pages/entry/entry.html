@@ -1,0 +1,70 @@
+<ion-header>
+  <ion-navbar>
+    <ion-title>
+      Entry
+    </ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <form [formGroup]="entry_form">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Client name</ion-label>
+        <ion-input type="text" [formControlName]="'client_name'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Mobile</ion-label>
+        <ion-input type="number" [formControlName]="'mobile_number'"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Address</ion-label>
+        <ion-input type="text" [formControlName]="'address'"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Order date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [formControlName]="'order_date'"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Order completion date</ion-label>
+        <ion-datetime displayFormat="MM/DD/YYYY" [formControlName]="'order_completion_date'"></ion-datetime>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Order value / charges</ion-label>
+        <ion-input type="number" formControlName="order_value"></ion-input>
+      </ion-item>
+      <ion-item>
+        <ion-label floating>Comments</ion-label>
+        <ion-input type="text" [formControlName]="'comments'"></ion-input>
+      </ion-item>
+    </ion-list>
+    <ion-list radio-group [formControlName]="'property_type'">
+      <ion-list-header>
+        Property type
+      </ion-list-header>
+
+      <ion-item>
+        <ion-label>1BHK</ion-label>
+        <ion-radio checked="true" value="1bhk"></ion-radio>
+      </ion-item>
+
+      <ion-item>
+        <ion-label>2BHK</ion-label>
+        <ion-radio value="2bhk"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>3BHK</ion-label>
+        <ion-radio value="3bhk"></ion-radio>
+      </ion-item>
+      <ion-item>
+        <ion-label>Villa</ion-label>
+        <ion-radio value="villa"></ion-radio>
+      </ion-item>
+    </ion-list>
+    <button type="submit" ion-button (click)="onSubmit()">Save</button>
+  </form>
+  <button ion-button color="warn" (click)="onReset()">Reset</button>
+</ion-content>
