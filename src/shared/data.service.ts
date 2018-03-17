@@ -38,7 +38,7 @@ export class DataService {
 
   updateData(id, job_data) {
     return new Promise((resolve, reject) => {
-      this.http.post(
+      this.http.put(
         this.db_url + '/data/' + id + '.json',
         job_data
       ).subscribe((response_data) => {

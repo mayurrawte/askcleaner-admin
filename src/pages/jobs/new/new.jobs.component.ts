@@ -28,6 +28,7 @@ export class NewJobsComponent implements OnInit {
 
   ngOnInit() {
     let data = this.params.get('job');
+    console.log(data);
     if (data) {
       if (!data['order_completion_date']) {
         data['order_completion_date'] = '';
