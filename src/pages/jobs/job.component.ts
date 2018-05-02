@@ -33,6 +33,7 @@ export class JobComponent implements OnInit {
           this.jobs_keys = Object.getOwnPropertyNames(this.jobs_firebase_data);
           this.jobs = [];
           for (let key of this.jobs_keys) {
+            this.jobs_firebase_data[key].key = key;
             this.jobs.push(this.jobs_firebase_data[key]);
           }
         } else {
@@ -52,18 +53,16 @@ export class JobComponent implements OnInit {
     })
   }
 
-  deleteJob(index) {
-    const id = this.jobs_keys[index];
-    this.dataService.deleteData(id)
+  deleteJob(key: string) {
+    console.log(key);
+    this.dataService.deleteData(key)
       .then((result) => {
         this.getAllJobs();
       });
   }
 
   updateJob(event_data) {
-    console.log(event_data);
-    const key = this.jobs_keys[event_data.index];
-    this.dataService.updateData(key, event_data.job_data)
+    this.dataService.updateData(event_data.key, event_data.job_data)
       .then((result_data) => {
         console.log('updated');
         console.log(result_data);

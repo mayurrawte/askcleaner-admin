@@ -12,11 +12,11 @@
       <p>{{job.client_name}}</p>
     </ion-item>
     <ion-item-options>
-      <button ion-button color="primary" icon-start (click)="updateJob(i,job)">
+      <button ion-button color="primary" icon-start (click)="updateJob(job)">
         <ion-icon name="create"></ion-icon>
         Update
       </button>
-      <button ion-button color="danger" icon-start (click)="deleteJob(i)">
+      <button ion-button color="danger" icon-start (click)="deleteJob(job)">
         <ion-icon name="trash"></ion-icon>
         Delete
       </button>
@@ -41,7 +41,7 @@
         <ion-icon name="create"></ion-icon>
         Update
       </button>
-      <button ion-button class="warning-button" icon-start (click)="deleteJob(i)">
+      <button ion-button class="warning-button" icon-start (click)="deleteJob(job)">
         <ion-icon name="trash"></ion-icon>
         Delete
       </button>

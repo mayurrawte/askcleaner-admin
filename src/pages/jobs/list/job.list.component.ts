@@ -40,12 +40,12 @@ export class JobListComponent implements OnInit, OnChanges {
     }
   }
 
-  updateJob(index, job) {
+  updateJob(job) {
     let profileModal = this.modalCtrl.create(NewJobsComponent, {'job': job});
     profileModal.present();
     profileModal.onDidDismiss((result) => {
       if (result) {
-        this.updateJobEmitter.emit({index: index, job_data: result});
+        this.updateJobEmitter.emit({key: job.key, job_data: result});
       }
     });
   }
@@ -54,7 +54,8 @@ export class JobListComponent implements OnInit, OnChanges {
     this.confirmDelete(index);
   }
 
-  confirmDelete(index) {
+  confirmDelete(job) {
+    console.log(job);
     let alert = this.alertCtrl.create({
       title: 'Delete',
       message: 'Do you really want to delete this job?',
@@ -63,7 +64,7 @@ export class JobListComponent implements OnInit, OnChanges {
           text: 'Yes boss',
           role: 'cancel',
           handler: () => {
-            this.deleteJobEmitter.emit(index);
+            this.deleteJobEmitter.emit(job.key);
           }
         },
         {

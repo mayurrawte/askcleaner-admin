@@ -9,7 +9,6 @@ export class QuoteService {
   }
 
   getMeAQuote() {
-    console.log('i will get you a quote');
     return new Promise((resolve, reject) => {
       this.http.get(this.API_ENDPOINT)
         .subscribe((result) => {
